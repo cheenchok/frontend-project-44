@@ -34,8 +34,10 @@ for (let i = 0; i < 3; i += 1) {
     correctAnswers += 1;
     console.log('Correct!');
   } else {
-    console.log(`"${myAnswer}" is wrong answer ;(. Correct answer was "${computerAnswer}".
-  Let's try again, ${name}!`);
+    console.log(
+      `"${myAnswer}" is wrong answer ;(. Correct answer was "${computerAnswer}".`,
+    );
+    console.log(`Let's try again, ${name}!`);
   }
 }
 
