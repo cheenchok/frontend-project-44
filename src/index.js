@@ -23,4 +23,6 @@ function getRandomSymbol() {
   return '*';
 }
 
-export { getName, getAnswer, getRandomIntInclusive, getRandomSymbol };
+export {
+  getName, getAnswer, getRandomIntInclusive, getRandomSymbol,
+};
