@@ -30,7 +30,7 @@ for (let i = 0; i < 3; i += 1) {
   const myAnswer = getAnswer();
   const computerAnswer = evenNumber(randomNumber);
 
-  if (myAnswer === `${computerAnswer}`) {
+  if (myAnswer === computerAnswer) {
     correctAnswers += 1;
     console.log('Correct!');
   } else {
@@ -38,9 +38,10 @@ for (let i = 0; i < 3; i += 1) {
       `'${myAnswer}' is wrong answer ;(. Correct answer was '${computerAnswer}'`,
     );
     console.log(`Let's try again, ${name}!`);
+    break;
   }
 }
 
-// if (correctAnswers === 3) {
-console.log(`Congratulations, ${name}!`);
-// }
+if (correctAnswers === 3) {
+  console.log(`Congratulations, ${name}!`);
+}
