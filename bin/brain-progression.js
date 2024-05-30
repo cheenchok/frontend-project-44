@@ -11,7 +11,7 @@ console.log('Welcome to the Brain Games!');
 const name = getName();
 
 console.log(`Hello, ${name}!`);
-console.log('What is the result of the expression?');
+console.log('What number is missing in the progression?');
 
 let correctAnswers = 0;
 
