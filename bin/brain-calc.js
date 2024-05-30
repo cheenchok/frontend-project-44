@@ -45,7 +45,7 @@ for (let i = 0; i < 3; i += 1) {
     secondRandomNumber,
   );
 
-  if (myAnswer === computerAnswer) {
+  if (myAnswer === `${computerAnswer}`) {
     correctAnswers += 1;
     console.log('Correct!');
   } else {

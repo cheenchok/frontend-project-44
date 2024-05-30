@@ -34,7 +34,7 @@ for (let i = 0; i < 3; i += 1) {
   const myAnswer = getAnswer();
   const computerAnswer = primeNumber(randomNumber);
 
-  if (myAnswer === computerAnswer) {
+  if (myAnswer === `${computerAnswer}`) {
     correctAnswers += 1;
     console.log('Correct!');
   } else {
