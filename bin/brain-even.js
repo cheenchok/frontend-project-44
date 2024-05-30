@@ -41,6 +41,6 @@ for (let i = 0; i < 3; i += 1) {
   }
 }
 
-if (correctAnswers === 3) {
-  console.log(`Congratulations, ${name}!`);
-}
+// if (correctAnswers === 3) {
+console.log(`Congratulations, ${name}!`);
+// }
