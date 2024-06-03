@@ -8,7 +8,7 @@ function getName() {
   return readlineSync.question('May I have your name? ');
 }
 
-function runBrainGame(task, question, computerAnswer) {
+function runBrainGame(task, questionArray, computerAnswerArray) {
   console.log('Welcome to the Brain Games!');
 
   const name = getName();
@@ -17,13 +17,13 @@ function runBrainGame(task, question, computerAnswer) {
   console.log(task);
 
   for (let i = 0; i < 3; i += 1) {
-    console.log(question);
+    console.log(questionArray[i]);
 
     const myAnswer = getAnswer();
 
-    if (myAnswer !== `${computerAnswer}`) {
+    if (myAnswer !== `${computerAnswerArray[i]}`) {
       console.log(
-        `'${myAnswer}' is wrong answer ;(. Correct answer was '${computerAnswer}'.`,
+        `'${myAnswer}' is wrong answer ;(. Correct answer was '${computerAnswerArray[i]}'.`,
       );
       console.log(`Let's try again, ${name}!`);
       return;
