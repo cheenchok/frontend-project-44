@@ -1,9 +1,6 @@
 import readlineSync from 'readline-sync';
 import { getAnswer, getRandomIntInclusive } from '../index.js';
-
-function greeting() {
-  console.log('Welcome to the Brain Games!');
-}
+import { greeting } from '../new-index.js';
 
 function getName() {
   return readlineSync.question('May I have your name? ');
@@ -31,7 +28,7 @@ export default function runBrainEvenGame() {
     const myAnswer = getAnswer();
     const computerAnswer = evenNumber(randomNumber);
 
-    if (myAnswer !== computerAnswer) {
+    if (myAnswer !== `${computerAnswer}`) {
       console.log(
         `'${myAnswer}' is wrong answer ;(. Correct answer was '${computerAnswer}'`,
       );
