@@ -23,7 +23,7 @@ function runBrainGame(task, question, computerAnswer) {
 
     if (myAnswer !== `${computerAnswer}`) {
       console.log(
-        `'${myAnswer}' is wrong answer ;(. Correct answer was '${computerAnswer}'`,
+        `'${myAnswer}' is wrong answer ;(. Correct answer was '${computerAnswer}'.`,
       );
       console.log(`Let's try again, ${name}!`);
       return;
