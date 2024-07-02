@@ -16,8 +16,8 @@ function runBrainGame(task, steps) {
   console.log(`Hello, ${name}!`);
   console.log(task);
 
-  for (let i = 0; i < step.length; i += 1) {
-    const { question, correctAnswer } = step[i];
+  for (let i = 0; i < steps.length; i += 1) {
+    const { question, correctAnswer } = steps[i];
 
     console.log(question);
 
