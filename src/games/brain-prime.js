@@ -12,12 +12,20 @@ const primeNumber = (number) => {
 };
 
 export default function runBrainPrimeGame() {
-  const randomNumber = getRandomIntInclusive(1, 100);
-  const computerAnswer = primeNumber(randomNumber);
+  const steps = [];
+
+  for (let i = 0; i < 3; i += 1) {
+    const randomNumber = getRandomIntInclusive(1, 100);
+
+    const step = {
+      question: `Question: ${randomNumber}`,
+      correctAnswer: primeNumber(randomNumber),
+    };
+    steps.push(step);
+  }
 
   runBrainGame(
     'Answer "yes" if given number is prime. Otherwise answer "no".',
-    `Question: ${randomNumber}`,
-    computerAnswer,
+    steps,
   );
 }

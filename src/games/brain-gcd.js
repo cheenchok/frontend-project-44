@@ -6,17 +6,20 @@ function greatCommonDivider(x, y) {
   }
   return greatCommonDivider(y, x % y);
 }
-export default function runBrainGcdGame() {
-  const firstRandomNumber = getRandomIntInclusive(1, 100);
-  const secondRandomNumber = getRandomIntInclusive(1, 100);
-  const computerAnswer = greatCommonDivider(
-    firstRandomNumber,
-    secondRandomNumber,
-  );
 
-  runBrainGame(
-    'Find the greatest common divisor of given numbers.',
-    `Question: ${firstRandomNumber} ${secondRandomNumber}`,
-    computerAnswer,
-  );
+export default function runBrainGcdGame() {
+  const steps = [];
+
+  for (let i = 0; i < 3; i += 1) {
+    const firstRandomNumber = getRandomIntInclusive(1, 100);
+    const secondRandomNumber = getRandomIntInclusive(1, 100);
+
+    const step = {
+      question: `Question: ${firstRandomNumber} ${secondRandomNumber}`,
+      correctAnswer: greatCommonDivider(firstRandomNumber, secondRandomNumber),
+    };
+    steps.push(step);
+  }
+
+  runBrainGame('Find the greatest common divisor of given numbers.', steps);
 }

@@ -8,7 +8,7 @@ function getName() {
   return readlineSync.question('May I have your name? ');
 }
 
-function runBrainGame(task, questionArray, computerAnswerArray) {
+function runBrainGame(task, steps) {
   console.log('Welcome to the Brain Games!');
 
   const name = getName();
@@ -16,14 +16,16 @@ function runBrainGame(task, questionArray, computerAnswerArray) {
   console.log(`Hello, ${name}!`);
   console.log(task);
 
-  for (let i = 0; i < 3; i += 1) {
-    console.log(questionArray[i]);
+  for (const step of steps) {
+    const { question, correctAnswer } = step;
+
+    console.log(question);
 
     const myAnswer = getAnswer();
 
-    if (myAnswer !== `${computerAnswerArray[i]}`) {
+    if (myAnswer !== String(correctAnswer)) {
       console.log(
-        `'${myAnswer}' is wrong answer ;(. Correct answer was '${computerAnswerArray[i]}'.`,
+        `'${myAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`,
       );
       console.log(`Let's try again, ${name}!`);
       return;
@@ -38,15 +40,4 @@ function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-function getRandomSymbol() {
-  const randomNumber = getRandomIntInclusive(1, 3);
-  if (randomNumber === 1) {
-    return '+';
-  }
-  if (randomNumber === 2) {
-    return '-';
-  }
-  return '*';
-}
-
-export { getName, getRandomIntInclusive, getRandomSymbol, runBrainGame };
+export { getName, getRandomIntInclusive, runBrainGame };

@@ -21,23 +21,23 @@ function calcFindNumber(firstProgressionNumber, offset, randomElementIndex) {
 }
 
 export default function runBrainProgGame() {
-  const firstProgressionNumber = getRandomIntInclusive(1, 10);
-  const offset = getRandomIntInclusive(1, 10);
-  const randomElementIndex = getRandomIntInclusive(0, 9);
-  const computerAnswer = calcFindNumber(
-    firstProgressionNumber,
-    offset,
-    randomElementIndex,
-  );
-  const questionString = getQuestion(
-    firstProgressionNumber,
-    offset,
-    randomElementIndex,
-  );
+  const steps = [];
 
-  runBrainGame(
-    'What number is missing in the progression?',
-    questionString,
-    computerAnswer,
-  );
+  for (let i = 0; i < 3; i += 1) {
+    const firstProgressionNumber = getRandomIntInclusive(1, 10);
+    const offset = getRandomIntInclusive(1, 10);
+    const randomElementIndex = getRandomIntInclusive(0, 9);
+
+    const step = {
+      question: getQuestion(firstProgressionNumber, offset, randomElementIndex),
+      correctAnswer: calcFindNumber(
+        firstProgressionNumber,
+        offset,
+        randomElementIndex,
+      ),
+    };
+    steps.push(step);
+  }
+
+  runBrainGame('What number is missing in the progression?', steps);
 }
