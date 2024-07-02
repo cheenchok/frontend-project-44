@@ -15,11 +15,11 @@ export default function runBrainPrimeGame() {
   const steps = [];
 
   for (let i = 0; i < 3; i += 1) {
-    const randomNumber = getRandomIntInclusive(1, 100);
+    const expectedBrainNumber = getRandomIntInclusive(1, 100);
 
     const step = {
-      question: `Question: ${randomNumber}`,
-      correctAnswer: primeNumber(randomNumber),
+      question: `Question: ${expectedBrainNumber}`,
+      correctAnswer: primeNumber(expectedBrainNumber),
     };
     steps.push(step);
   }
