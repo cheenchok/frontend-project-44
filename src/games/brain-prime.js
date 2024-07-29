@@ -1,5 +1,5 @@
-import { runBrainGame } from '../index.js';
-import { getRandomIntInclusive } from '../utils.js';
+import runBrainGame from '../index.js';
+import getRandomIntInclusive from '../utils.js';
 
 const isPrimeNumber = (number) => {
   for (let i = 2; i < number; i += 1) {

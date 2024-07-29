@@ -1,5 +1,5 @@
-import { runBrainGame } from '../index.js';
-import { getRandomIntInclusive } from '../utils.js';
+import runBrainGame from '../index.js';
+import getRandomIntInclusive from '../utils.js';
 
 function calcNumbers(a, b, c) {
   if (b === '+') {

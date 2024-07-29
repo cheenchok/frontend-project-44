@@ -24,7 +24,6 @@ export default [
       'import/no-named-as-default-member': 0,
       'import/extensions': 0,
       'no-console': 0,
-      'import/prefer-default-export': 0,
     },
   },
   { ignores: ['**/*.config.js'] },

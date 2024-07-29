@@ -1,6 +1,6 @@
 import readlineSync from 'readline-sync';
 
-export function runBrainGame(task, makeData) {
+export default function runBrainGame(task, makeData) {
   console.log('Welcome to the Brain Games!');
 
   const name = readlineSync.question('May I have your name? ');

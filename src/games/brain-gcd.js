@@ -1,5 +1,5 @@
-import { runBrainGame } from '../index.js';
-import { getRandomIntInclusive } from '../utils.js';
+import runBrainGame from '../index.js';
+import getRandomIntInclusive from '../utils.js';
 
 function greatCommonDivider(x, y) {
   if (y === 0) {
