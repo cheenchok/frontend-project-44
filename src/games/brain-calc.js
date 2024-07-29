@@ -10,7 +10,7 @@ function calcNumbers(a, b, c) {
   return a * c;
 }
 
-function getRandomSymbol() {
+function getRandomOperator() {
   const randomNumber = getRandomIntInclusive(1, 3);
   if (randomNumber === 1) {
     return '+';
@@ -21,24 +21,22 @@ function getRandomSymbol() {
   return '*';
 }
 
+function makeData() {
+  const firstRandomNumber = getRandomIntInclusive(1, 100);
+  const secondRandomNumber = getRandomIntInclusive(1, 100);
+  const randomOperator = getRandomOperator();
+
+  const question = `${firstRandomNumber} ${randomOperator} ${secondRandomNumber}`;
+  const correctAnswer = calcNumbers(
+    firstRandomNumber,
+    randomOperator,
+    secondRandomNumber,
+  );
+  const data = { question, correctAnswer };
+
+  return data;
+}
+
 export default function runBrainCalcGame() {
-  const steps = [];
-
-  for (let i = 0; i < 3; i += 1) {
-    const firstRandomNumber = getRandomIntInclusive(1, 100);
-    const secondRandomNumber = getRandomIntInclusive(1, 100);
-    const randomSymbol = getRandomSymbol();
-
-    const step = {
-      question: `Question: ${firstRandomNumber} ${randomSymbol} ${secondRandomNumber}`,
-      correctAnswer: calcNumbers(
-        firstRandomNumber,
-        randomSymbol,
-        secondRandomNumber,
-      ),
-    };
-    steps.push(step);
-  }
-
-  runBrainGame('What is the result of the expression?', steps);
+  runBrainGame('What is the result of the expression?', makeData);
 }

@@ -1,27 +1,19 @@
 import readlineSync from 'readline-sync';
 
-function getAnswer() {
-  return readlineSync.question('Your answer: ');
-}
-
-function getName() {
-  return readlineSync.question('May I have your name? ');
-}
-
-function runBrainGame(task, steps) {
+export function runBrainGame(task, makeData) {
   console.log('Welcome to the Brain Games!');
 
-  const name = getName();
+  const name = readlineSync.question('May I have your name? ');
 
   console.log(`Hello, ${name}!`);
   console.log(task);
 
-  for (let i = 0; i < steps.length; i += 1) {
-    const { question, correctAnswer } = steps[i];
+  for (let i = 0; i < 3; i += 1) {
+    const { question, correctAnswer } = makeData();
 
-    console.log(question);
+    console.log(`Question: ${question}`);
 
-    const myAnswer = getAnswer();
+    const myAnswer = readlineSync.question('Your answer: ');
 
     if (myAnswer !== String(correctAnswer)) {
       console.log(
@@ -35,9 +27,3 @@ function runBrainGame(task, steps) {
 
   console.log(`Congratulations, ${name}!`);
 }
-
-function getRandomIntInclusive(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-export { getName, getRandomIntInclusive, runBrainGame };

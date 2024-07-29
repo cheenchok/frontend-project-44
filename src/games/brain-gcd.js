@@ -1,4 +1,5 @@
-import { getRandomIntInclusive, runBrainGame } from '../index.js';
+import { runBrainGame } from '../index.js';
+import { getRandomIntInclusive } from '../utils.js';
 
 function greatCommonDivider(x, y) {
   if (y === 0) {
@@ -7,19 +8,20 @@ function greatCommonDivider(x, y) {
   return greatCommonDivider(y, x % y);
 }
 
+function makeData() {
+  const firstRandomNumber = getRandomIntInclusive(1, 100);
+  const secondRandomNumber = getRandomIntInclusive(1, 100);
+
+  const question = `${firstRandomNumber} ${secondRandomNumber}`;
+  const correctAnswer = greatCommonDivider(
+    firstRandomNumber,
+    secondRandomNumber,
+  );
+  const data = { question, correctAnswer };
+
+  return data;
+}
+
 export default function runBrainGcdGame() {
-  const steps = [];
-
-  for (let i = 0; i < 3; i += 1) {
-    const firstRandomNumber = getRandomIntInclusive(1, 100);
-    const secondRandomNumber = getRandomIntInclusive(1, 100);
-
-    const step = {
-      question: `Question: ${firstRandomNumber} ${secondRandomNumber}`,
-      correctAnswer: greatCommonDivider(firstRandomNumber, secondRandomNumber),
-    };
-    steps.push(step);
-  }
-
-  runBrainGame('Find the greatest common divisor of given numbers.', steps);
+  runBrainGame('Find the greatest common divisor of given numbers.', makeData);
 }

@@ -1,31 +1,30 @@
-import { getRandomIntInclusive, runBrainGame } from '../index.js';
+import { runBrainGame } from '../index.js';
+import { getRandomIntInclusive } from '../utils.js';
 
-const primeNumber = (number) => {
+const isPrimeNumber = (number) => {
   for (let i = 2; i < number; i += 1) {
     const result = number % i;
 
     if (result === 0) {
-      return 'no';
+      return false;
     }
   }
-  return 'yes';
+  return true;
 };
 
+function makeData() {
+  const expectedBrainNumber = getRandomIntInclusive(1, 100);
+
+  const question = `${expectedBrainNumber}`;
+  const correctAnswer = isPrimeNumber(expectedBrainNumber) ? 'yes' : 'no';
+  const data = { question, correctAnswer };
+
+  return data;
+}
+
 export default function runBrainPrimeGame() {
-  const steps = [];
-
-  for (let i = 0; i < 3; i += 1) {
-    const expectedBrainNumber = getRandomIntInclusive(1, 100);
-
-    const step = {
-      question: `Question: ${expectedBrainNumber}`,
-      correctAnswer: primeNumber(expectedBrainNumber),
-    };
-    steps.push(step);
-  }
-
   runBrainGame(
     'Answer "yes" if given number is prime. Otherwise answer "no".',
-    steps,
+    makeData,
   );
 }

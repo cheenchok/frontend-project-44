@@ -1,27 +1,21 @@
-import { getRandomIntInclusive, runBrainGame } from '../index.js';
+import { runBrainGame } from '../index.js';
+import { getRandomIntInclusive } from '../utils.js';
 
-const evenNumber = (number) => {
-  if (number % 2 === 0) {
-    return 'yes';
-  }
-  return 'no';
-};
+const isEvenNumber = (number) => number % 2 === 0;
+
+function makeData() {
+  const expectedEvenNumber = getRandomIntInclusive(1, 100);
+
+  const question = `${expectedEvenNumber}`;
+  const correctAnswer = isEvenNumber(expectedEvenNumber) ? 'yes' : 'no';
+  const data = { question, correctAnswer };
+
+  return data;
+}
 
 export default function runBrainEvenGame() {
-  const steps = [];
-
-  for (let i = 0; i < 3; i += 1) {
-    const expectedEvenNumber = getRandomIntInclusive(1, 100);
-
-    const step = {
-      question: `Question: ${expectedEvenNumber}`,
-      correctAnswer: evenNumber(expectedEvenNumber),
-    };
-    steps.push(step);
-  }
-
   runBrainGame(
     'Answer "yes" if the number is even, otherwise answer "no".',
-    steps,
+    makeData,
   );
 }

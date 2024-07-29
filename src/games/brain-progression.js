@@ -1,43 +1,32 @@
-import { runBrainGame, getRandomIntInclusive } from '../index.js';
+import { runBrainGame } from '../index.js';
+import { getRandomIntInclusive } from '../utils.js';
 
-function getQuestion(firstProgressionNumber, offset, randomElementIndex) {
-  let questionString = 'Question:';
+function makeData() {
+  const firstProgressionNumber = getRandomIntInclusive(1, 10);
+  const offset = getRandomIntInclusive(1, 10);
+  const randomElementIndex = getRandomIntInclusive(0, 9);
+
+  let question = '';
+  let correctAnswer = null;
 
   for (let j = 0; j < 10; j += 1) {
     const progressionNumber = firstProgressionNumber + offset * j;
 
     if (j === randomElementIndex) {
-      questionString = `${questionString} ..`;
+      question = `${question}..`;
+      correctAnswer = progressionNumber;
     } else {
-      questionString = `${questionString} ${progressionNumber}`;
+      question = `${question}${progressionNumber}`;
     }
+
+    question = `${question} `;
   }
 
-  return questionString;
-}
+  const data = { question, correctAnswer };
 
-function calcFindNumber(firstProgressionNumber, offset, randomElementIndex) {
-  return firstProgressionNumber + offset * randomElementIndex;
+  return data;
 }
 
 export default function runBrainProgGame() {
-  const steps = [];
-
-  for (let i = 0; i < 3; i += 1) {
-    const firstProgressionNumber = getRandomIntInclusive(1, 10);
-    const offset = getRandomIntInclusive(1, 10);
-    const randomElementIndex = getRandomIntInclusive(0, 9);
-
-    const step = {
-      question: getQuestion(firstProgressionNumber, offset, randomElementIndex),
-      correctAnswer: calcFindNumber(
-        firstProgressionNumber,
-        offset,
-        randomElementIndex,
-      ),
-    };
-    steps.push(step);
-  }
-
-  runBrainGame('What number is missing in the progression?', steps);
+  runBrainGame('What number is missing in the progression?', makeData);
 }
